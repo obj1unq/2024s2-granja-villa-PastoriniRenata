@@ -62,3 +62,8 @@
 {"level":"info","message":"⌛ Validating granja.wlk","timeElapsed":209,"timestamp":"2024-09-29T00:09:51.351Z"}
 {"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.farmville on /Users/renpastorini/Desktop/Objetos/2024s2-granja-villa-PastoriniRenata","timeElapsed":97777,"timestamp":"2024-09-29T00:10:31.684Z"}
 {"level":"info","message":"⌛ Building environment","timeElapsed":1637,"timestamp":"2024-09-29T00:11:05.255Z"}
+{"level":"info","message":"⌛ Validating cultivos.wlk","timeElapsed":1059,"timestamp":"2024-09-29T00:11:06.329Z"}
+{"level":"info","message":"⌛ Validating testGranja.wtest","timeElapsed":1170,"timestamp":"2024-09-29T00:11:07.511Z"}
+{"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":1133,"timestamp":"2024-09-29T00:11:08.646Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":1415,"timestamp":"2024-09-29T00:11:10.062Z"}
+{"level":"info","message":"⌛ Validating granja.wlk","timeElapsed":439,"timestamp":"2024-09-29T00:11:10.512Z"}
