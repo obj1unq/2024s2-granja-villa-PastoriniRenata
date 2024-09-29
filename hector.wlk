@@ -17,19 +17,32 @@ object hector {
 
 
 	method sembrarTrigo(){
-		const trigo = new Trigo(position = self.position())
-		granja.sembrar(trigo)
-        game.addVisual(trigo)
+		if (not granja.hayPlantaEn(self.position())){
+			const trigo = new Trigo(position = self.position())
+			granja.sembrar(trigo)
+			game.addVisual(trigo)
+		}else{
+			self.error("No puedes plantar, ya hay una planta aquí")
+		}
 	}
     method sembrarMaiz(){
+		if (not granja.hayPlantaEn(self.position())){
 		const maiz = new Maiz(position = self.position())
 		granja.sembrar(maiz)
         game.addVisual(maiz)
+		}else{
+			self.error("No puedes plantar, ya hay una planta aquí")
+		}
 	}
+
     method sembrarTomaco(){
-		const tomaco = new Tomaco(position = self.position())
-		granja.sembrar(tomaco)
-        game.addVisual(tomaco)
+		if (not granja.hayPlantaEn(self.position())){
+			const tomaco = new Tomaco(position = self.position())
+			granja.sembrar(tomaco)
+			game.addVisual(tomaco)
+			}else{
+			self.error("No puedes plantar, ya hay una planta aquí")
+		}
 	}
 
 /*
@@ -42,6 +55,15 @@ object hector {
 	}
 
 */
+
+	method regar(){
+		if (not granja.hayPlantaEn(self.position())){
+			self.error("No tengo nada para regar")
+			}else{
+			granja.crecerPlanta(position)			
+			}
+	}
+
 }
 
 

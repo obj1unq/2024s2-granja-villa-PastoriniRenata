@@ -24,6 +24,9 @@ program farmville {
 	keyboard.m().onPressDo({hector.sembrarTrigo()  /* sembrar(Maiz) */ })
 	keyboard.t().onPressDo({hector.sembrarMaiz()   /* sembrar(Trigo) */})
 	keyboard.o().onPressDo({hector.sembrarTomaco() /* sembrar(Tomaco)*/})
+
+	keyboard.r().onPressDo({hector.regar()})
+
 	
  	
  	//  COMIENZA
