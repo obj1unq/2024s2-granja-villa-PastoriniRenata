@@ -11,6 +11,7 @@ object hector {
 
 	method mover(direccion){
 		const nuevaPosition = direccion.siguiente(position)
+
 		granja.validarDentro(nuevaPosition)
 
 		position = nuevaPosition
@@ -18,8 +19,8 @@ object hector {
 
 
 	method sembrarTrigo(){
-		if (not granja.hayPlantaEn(self.position())){
-			const trigo = new Trigo(position = self.position())
+		if (not granja.hayPlantaEn(position)){
+			const trigo = new Trigo(position = position)
 			granja.sembrar(trigo)
 			game.addVisual(trigo)
 		}else{
@@ -27,8 +28,8 @@ object hector {
 		}
 	}
     method sembrarMaiz(){
-		if (not granja.hayPlantaEn(self.position())){
-		const maiz = new Maiz(position = self.position())
+		if (not granja.hayPlantaEn(position)){
+		const maiz = new Maiz(position = position)
 		granja.sembrar(maiz)
         game.addVisual(maiz)
 		}else{
@@ -37,8 +38,8 @@ object hector {
 	}
 
     method sembrarTomaco(){
-		if (not granja.hayPlantaEn(self.position())){
-			const tomaco = new Tomaco(position = self.position())
+		if (not granja.hayPlantaEn(position)){
+			const tomaco = new Tomaco(position = position)
 			granja.sembrar(tomaco)
 			game.addVisual(tomaco)
 			}else{
@@ -51,19 +52,17 @@ object hector {
 
 	method cosecha() {
 
-		granja.validarCosecha(self.position()) //se fija si hay una planta y si es adulta
+		granja.validarCosecha(position) //se fija si hay una planta y si es adulta
 
-		cosechado.add(granja.plantaEn(self.position())) //guardo la planta en la lista d hector para dsps poder venderla
-		granja.cosechar(self.position())
-		
-			
+		cosechado.add(granja.plantaEn(position)) //guardo la planta en la lista d hector para dsps poder venderla
+		granja.cosechar(position)
 		
 	}
 
 
 /*
 	method sembrar(cultivo){
-		const cult = new cultivo(position = self.position())
+		const cult = new cultivo(position = position)
 		granja.sembrar(cult)
 		game.addVisual(cult)
 	}
@@ -71,11 +70,24 @@ object hector {
 */
 
 	method regar(){
-		if (granja.hayPlantaEn(self.position())){
-				granja.crecerPlanta(self.position())			
+		if (granja.hayPlantaEn(position)){
+				granja.crecerPlanta(position)			
 			}else{
 				self.error("No tengo nada para regar")
 			}
+	}
+
+
+	method vender(){
+		cosechado.forEach({planta => self.sumar(planta.precio())})
+		cosechado.clear()
+	}
+	method sumar(monto){
+		oro += monto
+	}
+
+	method info(){
+		game.say(self, "tengo "+ self.oro() + " monedas, y " + cosechado.size() + " plantas para vender")
 	}
 
 

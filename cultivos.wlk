@@ -18,6 +18,10 @@ class Maiz {
 		return estado == "adulto"
 	}
 
+	method precio(){
+		return 150
+	}
+
 
 
 }
@@ -40,6 +44,21 @@ class Trigo {
 	method esAdulto() {
 		return estado != "bebe"
 	}
+	method precio(){
+		return (self.etapa() - 1) * 100
+	}
+
+	method etapa(){
+		return if(estado == "bebe"){
+			0
+		}else if(estado == "adulto_1"){
+			1
+		}else if(estado == "adulto_2"){
+			2
+		}else{ //
+			3
+		}
+	}
 }
 
 class Tomaco {
@@ -55,6 +74,9 @@ class Tomaco {
 		}
 	method esAdulto() {
 		return estado == "adulto"
+	}
+	method precio(){
+		return 80
 	}
 }
 

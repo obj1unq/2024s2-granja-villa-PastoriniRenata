@@ -156,11 +156,8 @@ object granja {
 
 
 	method hayPlantaYEsAdultaEn(posit){
-		return self.hayPlantaEn(posit) and self.esPlantaAdulta(self.plantaEn(posit))
+		return self.hayPlantaEn(posit) and self.plantaEn(posit).esAdulto()
 	}
 
-	method esPlantaAdulta(planta){
-		return ["adulto","adulto_1","adulto_2","adulto_3"].any({estado => estado == planta.estado()} )
-	}
 
 }

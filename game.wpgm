@@ -28,6 +28,10 @@ program farmville {
 	keyboard.r().onPressDo({hector.regar()})
 
 	keyboard.c().onPressDo({hector.cosecha()})
+	
+	keyboard.v().onPressDo({hector.vender()})
+	
+	keyboard.space().onPressDo({hector.info()})
 
 	
  	
