@@ -291,3 +291,4 @@
 {"level":"info","message":"onRequest - WORKSPACE_URI:file:///c%3A/Users/Renu/2024s2-granja-villa-PastoriniRenata","timestamp":"2024-09-30T01:24:31.023Z"}
 {"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":101,"timestamp":"2024-09-30T01:24:31.689Z"}
 {"level":"info","message":"⌛ Building environment","timeElapsed":102,"timestamp":"2024-09-30T01:24:32.226Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":107,"timestamp":"2024-09-30T01:25:39.546Z"}
