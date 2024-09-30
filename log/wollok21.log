@@ -359,3 +359,45 @@
 {"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":1433,"timestamp":"2024-09-30T15:34:54.195Z"}
 {"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":401,"timestamp":"2024-09-30T15:34:54.622Z"}
 {"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.farmville on /Users/renpastorini/Desktop/Objetos/2024s2-granja-villa-PastoriniRenata","timeElapsed":106157,"timestamp":"2024-09-30T15:35:00.737Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.farmville on /Users/renpastorini/Desktop/Objetos/2024s2-granja-villa-PastoriniRenata","timeElapsed":44422,"timestamp":"2024-09-30T15:35:49.138Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.farmville on /Users/renpastorini/Desktop/Objetos/2024s2-granja-villa-PastoriniRenata","timeElapsed":42904,"timestamp":"2024-09-30T15:36:33.551Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":511,"timestamp":"2024-09-30T15:44:42.649Z"}
+{"level":"info","message":"onRequest - WORKSPACE_URI:file:///Users/renpastorini/Desktop/Objetos/2024s2-granja-villa-PastoriniRenata","timestamp":"2024-09-30T15:44:42.653Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":579,"timestamp":"2024-09-30T15:44:43.235Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":161,"timestamp":"2024-09-30T15:44:43.399Z"}
+{"level":"info","message":"⌛ Validating cultivos.wlk","timeElapsed":390,"timestamp":"2024-09-30T15:44:43.865Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":347,"timestamp":"2024-09-30T15:44:44.218Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":403,"timestamp":"2024-09-30T15:44:44.621Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":232,"timestamp":"2024-09-30T15:44:44.864Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":170,"timestamp":"2024-09-30T15:44:46.006Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":480,"timestamp":"2024-09-30T15:44:46.535Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":493,"timestamp":"2024-09-30T15:44:47.036Z"}
+{"level":"info","message":"⌛ Validating cultivos.wlk","timeElapsed":384,"timestamp":"2024-09-30T15:44:47.422Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":252,"timestamp":"2024-09-30T15:44:47.682Z"}
+{"level":"info","message":"⌛ Validating cultivos.wlk","timeElapsed":191,"timestamp":"2024-09-30T15:44:47.874Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":320,"timestamp":"2024-09-30T15:44:48.202Z"}
+{"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":394,"timestamp":"2024-09-30T15:44:48.596Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":319,"timestamp":"2024-09-30T15:44:48.917Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":313,"timestamp":"2024-09-30T15:44:49.319Z"}
+{"level":"info","message":"⌛ Validating granja.wlk","timeElapsed":382,"timestamp":"2024-09-30T15:44:49.717Z"}
+{"level":"info","message":"⌛ Validating testGranja.wtest","timeElapsed":265,"timestamp":"2024-09-30T15:44:49.983Z"}
+{"level":"info","message":"⌛ Validating cultivos.wlk","timeElapsed":253,"timestamp":"2024-09-30T15:44:50.246Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":325,"timestamp":"2024-09-30T15:44:50.571Z"}
+{"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":142,"timestamp":"2024-09-30T15:44:50.713Z"}
+{"level":"info","message":"⌛ Validating granja.wlk","timeElapsed":173,"timestamp":"2024-09-30T15:44:50.887Z"}
+{"level":"info","message":"⌛ Validating testGranja.wtest","timeElapsed":170,"timestamp":"2024-09-30T15:44:51.062Z"}
+{"level":"info","message":"⌛ Validating cultivos.wlk","timeElapsed":412,"timestamp":"2024-09-30T15:44:51.477Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":420,"timestamp":"2024-09-30T15:44:51.902Z"}
+{"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":295,"timestamp":"2024-09-30T15:44:52.201Z"}
+{"level":"info","message":"⌛ Validating granja.wlk","timeElapsed":896,"timestamp":"2024-09-30T15:44:53.097Z"}
+{"level":"info","message":"⌛ Validating testGranja.wtest","timeElapsed":203,"timestamp":"2024-09-30T15:44:53.302Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":294,"timestamp":"2024-09-30T15:44:53.601Z"}
+{"level":"info","message":"⌛ Validating cultivos.wlk","timeElapsed":219,"timestamp":"2024-09-30T15:44:53.932Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":362,"timestamp":"2024-09-30T15:44:54.298Z"}
+{"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":255,"timestamp":"2024-09-30T15:44:54.554Z"}
+{"level":"info","message":"⌛ Validating granja.wlk","timeElapsed":224,"timestamp":"2024-09-30T15:44:54.778Z"}
+{"level":"info","message":"⌛ Validating testGranja.wtest","timeElapsed":231,"timestamp":"2024-09-30T15:44:55.011Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.farmville on /Users/renpastorini/Desktop/Objetos/2024s2-granja-villa-PastoriniRenata","timeElapsed":642466,"timestamp":"2024-09-30T15:55:37.439Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":407,"timestamp":"2024-09-30T16:47:57.286Z"}
+{"level":"info","message":"⌛ Validating cultivos.wlk","timeElapsed":584,"timestamp":"2024-09-30T16:47:57.890Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":608,"timestamp":"2024-09-30T16:47:58.503Z"}
