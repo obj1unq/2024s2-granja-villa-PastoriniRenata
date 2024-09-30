@@ -7,6 +7,7 @@ object hector {
 	var property position = game.at(4,4)
 	const property image = "player.png"
 	var property oro = 0
+	var property cocechado = #{}
 
 	method mover(direccion){
 		const nuevaPosition = direccion.siguiente(position)
@@ -42,6 +43,17 @@ object hector {
 			game.addVisual(tomaco)
 			}else{
 			self.error("No puedes plantar, ya hay una planta aquí")
+		}
+	}
+
+
+
+
+	method cosecha() {
+		if (not granja.hayPlantaEn(self.position())){
+			self.error("No hay plantas para cosechar")
+		}else{
+			self.error("todavía no lo terminé")
 		}
 	}
 

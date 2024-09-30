@@ -2,59 +2,50 @@ import wollok.game.*
 import hector.*
 
 class Maiz {
-	var position = game.at(1, 1)
-	var image = "corn_baby.png"
+	var property position = game.at(1, 1)
+	var property estado = "bebe" // adulto
 	
-	method position(){
-		return position
-	}
-	method position(_pos){
-		position = _pos
-	}
+	
 	method image(){
-		return image
+		return if(estado == "bebe"){
+					"corn_baby.png"
+				}else{
+					 "corn_adult.png"
+				}
 	}
-	method image(_image){
-		image = _image
-	}
+
 
 
 }
-class Trigo {
-	var position = game.at(1, 1)
-	var image =  "wheat_0.png"
 
-	method position(){
-		return position
-	}
-	method position(_pos){
-		position = _pos
-	}
+class Trigo {
+	var property position = game.at(1, 1)
+	var property estado = "bebe" // adulto_1 adulto_2 adulto_3
 
 	method image(){
-		return image
-	}
-	method image(_image){
-		image = _image
+		return if(estado == "bebe"){
+					"wheat_0.png"
+				}else if(estado == "adulto_1"){
+					"wheat_1.png"
+				}else if(estado == "adulto_2"){
+					"wheat_2.png"
+				}else{
+					"wheat_3.png"
+				}
 	}
 }
 
 class Tomaco {
-	var position = game.at(1, 1)
-	var image =  "tomaco_baby.png"
-
-	method position(){
-		return position
-	}
-	method position(_pos){
-		position = _pos
-	}
+	var property position = game.at(1, 1)
+	var property estado = "bebe" // adulto
+	
 	method image(){
-		return image
-	}
-	method image(_image){
-		image = _image
-	}
+		return if(estado == "bebe"){
+					"tomaco_baby.png"
+				}else{
+					"tomaco.png"
+				}
+		}
 	
 }
 

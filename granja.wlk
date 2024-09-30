@@ -69,14 +69,14 @@ object granja {
 	method evolucionar(planta){
 		
 		 return if(planta.image() == 'corn_baby.png'){
-					new Maiz (position = planta.position(), image = 'corn_adult.png' )
+					new Maiz (position = planta.position(), estado = "adulto" )
 				
 				
 				}
 				else if(planta.image() == 'tomaco_baby.png'){
 					const sigPositEnCol = game.at(planta.position().x(), planta.position().y()+1)
 					const nuevaPosTomaco = self.primeraPosicionLibreEnColumna(sigPositEnCol)
-					new Tomaco(position = nuevaPosTomaco, image='tomaco.png') // mueve el tomaco 1 posicion mas arriba, si ya está ocupada, a la siguiente disponible,
+					new Tomaco(position = nuevaPosTomaco, estado = "adulto" ) // mueve el tomaco 1 posicion mas arriba, si ya está ocupada, a la siguiente disponible,
 																				// y si llega al borde, lo pone abajo d todo. En caso de tambien estar ocupada, se fija en la de arriba d esa
 																				// puede q termien poniendolo en su posicion inicial en caso de estar toda la fila ocupada
 													
@@ -98,20 +98,20 @@ object granja {
 	method evolucionarTrigo(planta){
 		//yo tengo la certeza de que esto lo voy a ejecutar sabiendo q la planta es una evolucion d tomaco es uno de los elementos de la lista de evoluciones
 		//const evoluciones = ['wheat_0.png','wheat_1.png','wheat_2.png','wheat_3.png']
-			return 	if(planta.image() == 'wheat_0.png'){ 
-					    new Trigo (position=planta.position(), image = 'wheat_1.png' )
-					}else if(planta.image()  == 'wheat_1.png'){ 
-						new Trigo (position=planta.position(), image = 'wheat_2.png' )
-					}else if(planta.image()  == 'wheat_2.png'){ 
-						new Trigo (position=planta.position(), image = 'wheat_3.png' )
+			return 	if(planta.estado() == "bebe"){ 
+					    new Trigo (position=planta.position(), estado = "adulto_1" )
+					}else if(planta.estado() == "adulto_1" ){ 
+						new Trigo (position=planta.position(), estado = "adulto_2" )
+					}else if(planta.estado() == "adulto_2" ){ 
+						new Trigo (position=planta.position(), estado = "adulto_3" )
 					}else { 
-						new Trigo (position=planta.position(), image = 'wheat_0.png' )
+						new Trigo (position=planta.position(), estado = "bebe" )
 					}
 
 	}
 
 	method primeraPosicionLibreEnColumna(posicion) {
-	// Si la posición está dentro de los límites
+		// Si la posición está dentro de los límites
 			if (self.estaDentro(posicion)) {
 				// Si hay una planta en la posición, buscar en la siguiente
 				if (self.hayPlantaEn(posicion)) {
