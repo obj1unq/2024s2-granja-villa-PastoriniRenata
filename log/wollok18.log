@@ -66,3 +66,6 @@
 {"level":"info","message":"onRequest - completionItem/resolve","timestamp":"2024-09-30T02:34:45.412Z"}
 {"level":"info","message":"onRequest - completionItem/resolve","timestamp":"2024-09-30T02:34:45.464Z"}
 {"level":"info","message":"onRequest - completionItem/resolve","timestamp":"2024-09-30T02:34:45.654Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":105,"timestamp":"2024-09-30T02:40:34.441Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":118,"timestamp":"2024-09-30T02:40:40.153Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":113,"timestamp":"2024-09-30T02:40:41.035Z"}
