@@ -57,12 +57,13 @@ object hector {
 */
 
 	method regar(){
-		if (not granja.hayPlantaEn(self.position())){
-			self.error("No tengo nada para regar")
+		if (granja.hayPlantaEn(self.position())){
+				granja.crecerPlanta(self.position())			
 			}else{
-			granja.crecerPlanta(position)			
+				self.error("No tengo nada para regar")
 			}
 	}
+
 
 }
 

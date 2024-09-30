@@ -41,7 +41,7 @@ class Trigo {
 
 class Tomaco {
 	var position = game.at(1, 1)
-	var image =  "tomaco.png"
+	var image =  "tomaco_baby.png"
 
 	method position(){
 		return position
