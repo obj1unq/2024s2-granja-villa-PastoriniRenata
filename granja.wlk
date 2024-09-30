@@ -38,8 +38,8 @@ object granja {
 	method estaDentro(posicion) {
 		return posicion.x().between(0, game.width() - 1) and posicion.y().between(0, game.height() - 1)
 	}
-    method sembrar(cultivo){
-        sembrado.add(cultivo)
+    method sembrar(planta){
+        sembrado.add(planta)
     }
 
 	method hayPlantaEn(pos){
@@ -50,18 +50,26 @@ object granja {
 		return pos1.x() == pos2.x() and pos1.y() == pos2.y()
 
 	}
+	method campoSinPlantaEn(_position){
+		return sembrado.filter({planta => not self.esMismaPosition(planta.position(), _position)})
+
+	}
+
+	method plantaEn(_position){
+		return sembrado.find({planta => self.esMismaPosition(planta.position(), _position)})
+	}
 
 	method crecerPlanta(_position) {
-		//LA ejecuto sabiendo que hay una planta en la posicion pasada!
-		const plantaEnPosition = sembrado.find({planta => self.esMismaPosition(planta.position(), _position)})
-		sembrado = sembrado.filter({planta => not self.esMismaPosition(planta.position(), _position)}) //saco la planta sin regar
+		//La ejecuto sabiendo que hay una planta en la posicion pasada!
+		const plantaEnPosition = self.plantaEn(_position) // la guardo antes de borrarla para despues borrar el visual y poder regarla
+		sembrado = self.campoSinPlantaEn(_position) //saco la planta sin regar
 
 		const plantaEvolucionada = self.evolucionar(plantaEnPosition)
 		
 		game.removeVisual(plantaEnPosition)
 		game.addVisual(plantaEvolucionada)
 		
-		sembrado.add(plantaEvolucionada)
+		self.sembrar(plantaEvolucionada)
 
 	
 	}
@@ -127,5 +135,24 @@ object granja {
 
 	}
 
+
+
+/*
+	method cosechar(posit){
+		//ya se q hay una planta en la posicion pasada por parametro!
+		const plantaEnPosition = sembrado.find({planta => self.esMismaPosition(planta.position(), _position)})
+		sembrado = sembrado.filter({planta => not self.esMismaPosition(planta.position(), _position)}) //saco la planta sin regar
+
+		const plantaEvolucionada = self.evolucionar(plantaEnPosition)
+		
+		game.removeVisual(plantaEnPosition)
+		game.addVisual(plantaEvolucionada)
+		
+		sembrado.add(plantaEvolucionada)
+
 	
+
+	}
+
+*/	
 }

@@ -14,6 +14,10 @@ class Maiz {
 				}
 	}
 
+	method esAdulto() {
+		return estado == "adulto"
+	}
+
 
 
 }
@@ -33,6 +37,9 @@ class Trigo {
 					"wheat_3.png"
 				}
 	}
+	method esAdulto() {
+		return estado != "bebe"
+	}
 }
 
 class Tomaco {
@@ -46,7 +53,9 @@ class Tomaco {
 					"tomaco.png"
 				}
 		}
-	
+	method esAdulto() {
+		return estado == "adulto"
+	}
 }
 
 
