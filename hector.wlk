@@ -4,7 +4,7 @@ import cultivos.*
 
 
 object hector {
-	var property position = game.center()
+	var property position = game.at(4,4)
 	const property image = "player.png"
 	var property oro = 0
 
@@ -45,13 +45,12 @@ object hector {
 		}
 	}
 
-/*
 
+/*
 	method sembrar(cultivo){
 		const cult = new cultivo(position = self.position())
 		granja.sembrar(cult)
-		gameAddVisual(cult)
-
+		game.addVisual(cult)
 	}
 
 */
