@@ -81,9 +81,11 @@ object hector {
 	method vender(){
 		cosechado.forEach({planta => self.sumar(planta.precio())})
 		cosechado.clear()
+		game.say(self, "Venta realizada!")
 	}
 	method sumar(monto){
 		oro += monto
+
 	}
 
 	method info(){
