@@ -137,22 +137,30 @@ object granja {
 
 
 
-/*
+
 	method cosechar(posit){
-		//ya se q hay una planta en la posicion pasada por parametro!
-		const plantaEnPosition = sembrado.find({planta => self.esMismaPosition(planta.position(), _position)})
-		sembrado = sembrado.filter({planta => not self.esMismaPosition(planta.position(), _position)}) //saco la planta sin regar
-
-		const plantaEvolucionada = self.evolucionar(plantaEnPosition)
+		//ya se q hay una planta en la posicion pasada por parametro y q es adulta!
 		
+		const plantaEnPosition = sembrado.find({planta => self.esMismaPosition(planta.position(), posit)})
 		game.removeVisual(plantaEnPosition)
-		game.addVisual(plantaEvolucionada)
 		
-		sembrado.add(plantaEvolucionada)
-
+		sembrado = sembrado.filter({planta => not self.esMismaPosition(planta.position(), posit)}) //saco la planta 
 	
-
 	}
 
-*/	
+	method validarCosecha(posit){
+		if(not self.hayPlantaYEsAdultaEn(posit)){
+			self.error("No hay nada para cosechar")
+		}
+	}
+
+
+	method hayPlantaYEsAdultaEn(posit){
+		return self.hayPlantaEn(posit) and self.esPlantaAdulta(self.plantaEn(posit))
+	}
+
+	method esPlantaAdulta(planta){
+		return ["adulto","adulto_1","adulto_2","adulto_3"].any({estado => estado == planta.estado()} )
+	}
+
 }

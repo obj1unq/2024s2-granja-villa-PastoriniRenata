@@ -50,12 +50,14 @@ object hector {
 
 
 	method cosecha() {
-		if (not granja.hayPlantaEn(self.position())){
-			self.error("No hay plantas para cosechar")
-		}else{
-			cosechado.add(granja.recolectar(self.position()))
-			granja.cosechar(self.position())
-		}
+
+		granja.validarCosecha(self.position()) //se fija si hay una planta y si es adulta
+
+		cosechado.add(granja.plantaEn(self.position())) //guardo la planta en la lista d hector para dsps poder venderla
+		granja.cosechar(self.position())
+		
+			
+		
 	}
 
 

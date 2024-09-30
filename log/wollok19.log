@@ -294,3 +294,23 @@
 {"level":"info","message":"onRequest - completionItem/resolve","timestamp":"2024-09-30T03:37:32.988Z"}
 {"level":"info","message":"onRequest - completionItem/resolve","timestamp":"2024-09-30T03:37:33.052Z"}
 {"level":"error","message":"✘ Failed to rebuild document Failed to parse game.wpgm: \n-- PARSING FAILED --------------------------------------------------\n\n  34 |  \t//  COMIENZA\n  35 | \tgame.start()\n> 36 | }\n     | ^\n  37 | \n\nExpected one of the following: \n\n'@', 'class', 'const', 'describe', 'mixin', 'object', 'only', 'package', 'program', 'test', 'var', '{', EOF, comment, not \"}\r\n\", whitespace\n","stack":"Error: Failed to parse game.wpgm: \n-- PARSING FAILED --------------------------------------------------\n\n  34 |  \t//  COMIENZA\n  35 | \tgame.start()\n> 36 | }\n     | ^\n  37 | \n\nExpected one of the following: \n\n'@', 'class', 'const', 'describe', 'mixin', 'object', 'only', 'package', 'program', 'test', 'var', '{', EOF, comment, not \"}\r\n\", whitespace\n\n    at c:\\Users\\Renu\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.3.5\\out\\server\\src\\server.js:2244:21840\n    at Array.map (<anonymous>)\n    at Ifn (c:\\Users\\Renu\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.3.5\\out\\server\\src\\server.js:2244:21764)\n    at h2.buildEnvironmentFrom (c:\\Users\\Renu\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.3.5\\out\\server\\src\\server.js:2275:16306)\n    at h2.updateEnvironmentWith (c:\\Users\\Renu\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.3.5\\out\\server\\src\\server.js:2275:16041)\n    at DL (c:\\Users\\Renu\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.3.5\\out\\server\\src\\server.js:2288:2292)\n    at b3.invoke (c:\\Users\\Renu\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.3.5\\out\\server\\src\\server.js:3:157188)\n    at o.fire (c:\\Users\\Renu\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.3.5\\out\\server\\src\\server.js:3:157958)\n    at c:\\Users\\Renu\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.3.5\\out\\server\\src\\server.js:37:57871\n    at Br (c:\\Users\\Renu\\.vscode\\extensions\\uqbar.wollok-lsp-ide-0.3.5\\out\\server\\src\\server.js:8:1561)","timestamp":"2024-09-30T03:37:52.685Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":681,"timestamp":"2024-09-30T13:03:51.422Z"}
+{"level":"info","message":"onRequest - WORKSPACE_URI:file:///Users/renpastorini/Desktop/Objetos/2024s2-granja-villa-PastoriniRenata","timestamp":"2024-09-30T13:03:51.461Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":209,"timestamp":"2024-09-30T13:03:51.717Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":118,"timestamp":"2024-09-30T13:03:51.842Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":144,"timestamp":"2024-09-30T13:03:52.000Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":158,"timestamp":"2024-09-30T13:03:52.168Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":130,"timestamp":"2024-09-30T13:03:52.299Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":229,"timestamp":"2024-09-30T13:03:52.528Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":402,"timestamp":"2024-09-30T13:03:52.930Z"}
+{"level":"info","message":"⌛ Validating cultivos.wlk","timeElapsed":218,"timestamp":"2024-09-30T13:03:53.304Z"}
+{"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":197,"timestamp":"2024-09-30T13:03:53.517Z"}
+{"level":"info","message":"⌛ Validating granja.wlk","timeElapsed":505,"timestamp":"2024-09-30T13:03:54.039Z"}
+{"level":"info","message":"⌛ Validating testGranja.wtest","timeElapsed":381,"timestamp":"2024-09-30T13:03:54.420Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":232,"timestamp":"2024-09-30T13:03:54.652Z"}
+{"level":"info","message":"⌛ Validating cultivos.wlk","timeElapsed":180,"timestamp":"2024-09-30T13:03:54.834Z"}
+{"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":140,"timestamp":"2024-09-30T13:03:54.974Z"}
+{"level":"info","message":"⌛ Validating granja.wlk","timeElapsed":213,"timestamp":"2024-09-30T13:03:55.189Z"}
+{"level":"info","message":"⌛ Validating testGranja.wtest","timeElapsed":468,"timestamp":"2024-09-30T13:03:55.658Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":810,"timestamp":"2024-09-30T14:21:35.444Z"}
+{"level":"info","message":"⌛ Validating granja.wlk","timeElapsed":548,"timestamp":"2024-09-30T14:21:36.017Z"}
