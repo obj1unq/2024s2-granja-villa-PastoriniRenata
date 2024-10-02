@@ -19,32 +19,23 @@ object hector {
 
 
 	method sembrarTrigo(){
-		if (not granja.hayPlantaEn(position)){
-			const trigo = new Trigo(position = position)
-			granja.sembrar(trigo)
-			game.addVisual(trigo)
-		}else{
-			self.error("No puedes plantar, ya hay una planta aquí")
-		}
+		granja.validarSiPuedoPlantar(position)
+		const trigo = new Trigo(position = position)
+		granja.sembrar(trigo)
+		game.addVisual(trigo)
+		
 	}
     method sembrarMaiz(){
-		if (not granja.hayPlantaEn(position)){
+		granja.validarSiPuedoPlantar(position)
 		const maiz = new Maiz(position = position)
 		granja.sembrar(maiz)
         game.addVisual(maiz)
-		}else{
-			self.error("No puedes plantar, ya hay una planta aquí")
-		}
 	}
-
     method sembrarTomaco(){
-		if (not granja.hayPlantaEn(position)){
-			const tomaco = new Tomaco(position = position)
-			granja.sembrar(tomaco)
-			game.addVisual(tomaco)
-			}else{
-			self.error("No puedes plantar, ya hay una planta aquí")
-		}
+		granja.validarSiPuedoPlantar(position)
+		const tomaco = new Tomaco(position = position)
+		granja.sembrar(tomaco)
+		game.addVisual(tomaco)
 	}
 
 
@@ -52,7 +43,7 @@ object hector {
 
 	method cosecha() {
 
-		granja.validarCosecha(position) //se fija si hay una planta y si es adulta
+		granja.validarSiPuedoCosechar(position) //se fija si hay una planta y si es adulta, lo hago acá para poder saber d si me lo tengo q guardar en "cosechado"
 
 		cosechado.add(granja.plantaEn(position)) //guardo la planta en la lista d hector para dsps poder venderla
 		granja.cosechar(position)
@@ -60,32 +51,23 @@ object hector {
 	}
 
 
-/*
-	method sembrar(cultivo){
-		const cult = new cultivo(position = position)
-		granja.sembrar(cult)
-		game.addVisual(cult)
-	}
-
-*/
 
 	method regar(){
-		if (granja.hayPlantaEn(position)){
-				granja.crecerPlanta(position)			
-			}else{
-				self.error("No tengo nada para regar")
-			}
-	}
+		
+		granja.regarPlanta(position)
 
+		
+	}
+	
 
 	method vender(){
-		cosechado.forEach({planta => self.sumar(planta.precio())})
+		//no necesito validar xq si está vacío el set no pasa nada
+		cosechado.forEach({planta => self.sumarGanancia(planta.precio())})
 		cosechado.clear()
 		game.say(self, "Venta realizada!")
 	}
-	method sumar(monto){
+	method sumarGanancia(monto){
 		oro += monto
-
 	}
 
 	method info(){
