@@ -87,7 +87,10 @@ class Trigo {
 		}else { 
 			etapa = 0
 		}
-}
+	}
+	method validarEvolucion(){
+			// x polimnorfismo, el trigo siempre evoluciona
+		}
 	
 
 
