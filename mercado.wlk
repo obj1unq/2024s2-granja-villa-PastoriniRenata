@@ -6,7 +6,7 @@ import hector.*
 class Mercado{
     var property position = null
     const property image = "market.png"
-    var property oro = 500
+    var property oro = 50000
     var property mercaderia = #{}
 
     
