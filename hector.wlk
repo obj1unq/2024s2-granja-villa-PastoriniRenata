@@ -39,9 +39,6 @@ object hector {
 		game.addVisual(tomaco)
 	}
 
-
-
-
 	method cosecha() {
 
 		granja.validarSiPuedoCosechar(position) //se fija si hay una planta y si es adulta, lo hago acá para poder saber d si me lo tengo q guardar en "cosechado"
@@ -53,10 +50,8 @@ object hector {
 
 	method regar(){
 		granja.regarPlanta(position)
-
 	}
 	
-
 	method vender(){
 		//no necesito validar xq si está vacío el set no pasa nada
 		cosechado.forEach({planta => self.sumarGanancia(planta.precio())})
