@@ -22,8 +22,6 @@ class Maiz {
 		return 150
 	}
 
-
-
 }
 
 class Trigo {
@@ -81,3 +79,35 @@ class Tomaco {
 }
 
 
+
+
+
+/*
+class Planta{
+	var property position = game.at(1, 1)
+	var property estado = "bebe" // adulto
+	const property tipo = null // trigo, maíz, tomaco, etc
+	
+
+
+	method image(){
+		return if(esTrigo(tipo) )
+
+
+		return if(estado == "bebe"){
+					"tomaco_baby.png"
+				}else{
+					"tomaco.png"
+				}
+		}
+	method esAdulto() {
+		return estado == "adulto"
+	}
+	method precio(){
+		return 80
+	}
+
+
+}
+
+*/
