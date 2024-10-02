@@ -1,13 +1,14 @@
 import wollok.game.*
 import granja.*
 import cultivos.*
-
+import aspersor.*
 
 object hector {
 	var property position = game.at(4,4)
 	const property image = "player.png"
 	var property oro = 0
 	var property cosechado = #{}
+	var property aspersores = #{}
 
 	method mover(direccion){
 		const nuevaPosition = direccion.siguiente(position)
@@ -50,13 +51,9 @@ object hector {
 		
 	}
 
-
-
 	method regar(){
-		
 		granja.regarPlanta(position)
 
-		
 	}
 	
 
@@ -74,6 +71,18 @@ object hector {
 		game.say(self, "tengo "+ self.oro() + " monedas, y " + cosechado.size() + " plantas para vender")
 	}
 
+
+	method agregarAspersor(){
+		const regador = new Aspersor(position = position)
+		game.addVisual(regador)
+
+		aspersores.add(regador)
+	}
+
+	method activarAspersor(){
+		aspersores.forEach({aspersor => aspersor.regar()})
+
+	}
 
 }
 

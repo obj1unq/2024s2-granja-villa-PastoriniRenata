@@ -34,6 +34,11 @@ program farmville {
 	
 	keyboard.space().onPressDo({hector.info()})
 
+	keyboard.a().onPressDo({hector.agregarAspersor()})
+
+	game.onTick(1000, "regador", {hector.activarAspersor()}) //cada 1 segundo se activan todos los aspersores q tenga hector
+
+
 	
  	
  	//  COMIENZA
