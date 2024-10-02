@@ -38,7 +38,7 @@ object granja {
 
 
 	method mercadoEn(pos){
-		return mercados.filter({mercado => mercado.position() == pos})
+		return mercados.find({mercado => mercado.position() == pos})
 	}
 
 	method validarSiHayMercado(pos){
@@ -49,13 +49,17 @@ object granja {
 
 	method validarSiPuedeVenderEn(pos, valor){
 		//ya se q tengo un mercado en esa pos!!
-		
+
 		if(not self.mercadoEn(pos).tieneSuficienteDinero(valor)){
 			self.error("El mercado no tiene suficiente dinero para comprar mi mercancia")
+		}else if(hector.tieneMercaderia()){
+			self.error("No tengo nada para vender")
+		}else{
+			game.say(self, "Venta realizada!")
 		}
 	}
 	method elMercadoCompra(pos){
-		self.mercadoEn(pos).comprar()
+		self.mercadoEn(pos).compra()
 	}
 	
 

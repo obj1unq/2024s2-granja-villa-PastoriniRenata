@@ -2,6 +2,7 @@ import wollok.game.*
 import granja.*
 import cultivos.*
 import aspersor.*
+import mercado.*
 
 object hector {
 	var property position = game.at(4,4)
@@ -55,14 +56,18 @@ object hector {
 	method vender(){
 		//no necesito validar xq si está vacío el set no pasa nada
 		granja.validarSiHayMercado(position)
+		
 		granja.validarSiPuedeVenderEn(position, self.valorDeSuCosecha())
 		
 		granja.elMercadoCompra(position)
 
 		oro += self.valorDeSuCosecha()
 		cosechado.clear()
-		game.say(self, "Venta realizada!")
 		
+		
+	}
+	method tieneMercaderia(){
+		return cosechado.size()>0
 	}
 
 	method valorDeSuCosecha(){

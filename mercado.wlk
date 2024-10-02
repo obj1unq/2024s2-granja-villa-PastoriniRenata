@@ -3,7 +3,6 @@ import granja.*
 import cultivos.*
 import aspersor.*
 import hector.*
-
 class Mercado{
     var property position = null
     const property image = "market.png"
@@ -17,10 +16,9 @@ class Mercado{
         oro -= hector.valorDeSuCosecha()
         
     }
-    
 
     method tieneSuficienteDinero(precio){
-        return oro >= precio
+        return self.oro() >= precio
     }
 
 
