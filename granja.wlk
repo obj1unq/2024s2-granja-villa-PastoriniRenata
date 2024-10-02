@@ -1,9 +1,12 @@
 import wollok.game.*
 import hector.*
 import cultivos.*
+import mercado.*
+
 
 object granja {
     var property sembrado = #{}// #{new Trigo(position=game.at(1,0)), new Trigo(position=game.at(1,1)),new Trigo(position=game.at(1,2)),new Trigo(position=game.at(1,3)), new Trigo(position=game.at(1,4)),new Trigo(position=game.at(1,5)),new Trigo(position=game.at(1,6)),new Trigo(position=game.at(1,7))}
+	var property mercados = #{new Mercado (position = game.at (0,0)),new Mercado (position = game.at (9,9))}
 
 
 	method validarDentro(posicion) {
@@ -25,9 +28,36 @@ object granja {
 	}
 
 	method validarSiPuedoPlantar(posit) {
-		if ( self.hayPlantaEn(posit)){self.error("No puedes plantar, ya hay una planta aquí") }
+		if ( self.hayPlantaEn(posit) or self.hayMercado(posit)){self.error("No puedes plantar, ya hay una planta aquí") }
 	  
 	}
+
+	method hayMercado(posit){
+		return posit == game.at(0,0) or posit == game.at(9,9)
+	}
+
+
+	method mercadoEn(pos){
+		return mercados.filter({mercado => mercado.position() == pos})
+	}
+
+	method validarSiHayMercado(pos){
+		if(not self.hayMercado(pos)){
+			self.error("No puedo vender, no estoy en un mercado")
+		}
+	}
+
+	method validarSiPuedeVenderEn(pos, valor){
+		//ya se q tengo un mercado en esa pos!!
+		
+		if(not self.mercadoEn(pos).tieneSuficienteDinero(valor)){
+			self.error("El mercado no tiene suficiente dinero para comprar mi mercancia")
+		}
+	}
+	method elMercadoCompra(pos){
+		self.mercadoEn(pos).comprar()
+	}
+	
 
 	method esMismaPosition(pos1, pos2){
 		return pos1 == pos2

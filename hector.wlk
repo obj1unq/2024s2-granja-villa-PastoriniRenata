@@ -54,16 +54,23 @@ object hector {
 	
 	method vender(){
 		//no necesito validar xq si está vacío el set no pasa nada
-		cosechado.forEach({planta => self.sumarGanancia(planta.precio())})
+		granja.validarSiHayMercado(position)
+		granja.validarSiPuedeVenderEn(position, self.valorDeSuCosecha())
+		
+		granja.elMercadoCompra(position)
+
+		oro += self.valorDeSuCosecha()
 		cosechado.clear()
 		game.say(self, "Venta realizada!")
+		
 	}
-	method sumarGanancia(monto){
-		oro += monto
+
+	method valorDeSuCosecha(){
+		return cosechado.sum({planta => planta.precio()})
 	}
 
 	method info(){
-		game.say(self, "tengo "+ self.oro() + " monedas, y " + cosechado.size() + " plantas para vender")
+		game.say(self, "tengo "+ self.oro() + " monedas, y " + cosechado.size() + " plantas para vender. El Precio de mi cosecha es de: " + self.valorDeSuCosecha())
 	}
 
 

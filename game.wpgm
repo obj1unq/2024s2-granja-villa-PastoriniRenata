@@ -3,6 +3,7 @@ import hector.*
 import cultivos.*
 import granja.*
 import movimiento.*
+import mercado.*
 
 program farmville {
 	//  CONFIG	
@@ -38,6 +39,8 @@ program farmville {
 
 	game.onTick(1000, "regador", {hector.activarAspersor()}) //cada 1 segundo se activan todos los aspersores q tenga hector
 
+	game.addVisual(new Mercado (position = game.at (0,0)))
+	game.addVisual(new Mercado (position = game.at (9,9)))
 
 	
  	
