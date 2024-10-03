@@ -12,6 +12,7 @@ program farmville {
 	game.width(10)
 	game.ground("ground.png")
 
+	granja.agregarMercados()
 
 
 	game.addVisual(hector)
@@ -20,8 +21,6 @@ program farmville {
 	keyboard.down().onPressDo ({hector.mover(abajo)})
 	keyboard.right().onPressDo({hector.mover(derecha)})
 	
-	
-
 
 	keyboard.t().onPressDo({hector.sembrarTrigo()  /* sembrar(Maiz) */ })
 	keyboard.m().onPressDo({hector.sembrarMaiz()   /* sembrar(Trigo) */})
@@ -39,9 +38,7 @@ program farmville {
 
 	game.onTick(1000, "regador", {hector.activarAspersor()}) //cada 1 segundo se activan todos los aspersores q tenga hector
 
-	game.addVisual(new Mercado (position = game.at (0,0)))
-	game.addVisual(new Mercado (position = game.at (9,9)))
-
+	
 	
  	
  	//  COMIENZA

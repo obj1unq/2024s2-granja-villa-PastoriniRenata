@@ -6,12 +6,12 @@ import mercado.*
 
 object granja {
     var property sembrado = #{}// #{new Trigo(position=game.at(1,0)), new Trigo(position=game.at(1,1)),new Trigo(position=game.at(1,2)),new Trigo(position=game.at(1,3)), new Trigo(position=game.at(1,4)),new Trigo(position=game.at(1,5)),new Trigo(position=game.at(1,6)),new Trigo(position=game.at(1,7))}
-	var property mercados = #{new Mercado (position = game.at (0,0)),new Mercado (position = game.at (9,9))}
+	var property mercados = #{}
 
 
 	method validarDentro(posicion) {
 		if (not self.estaDentro(posicion)) {
-			self.error("No puedo moverme fuera del tablero")
+			hector.error("No puedo moverme fuera del tablero")
 		}
 	}
 
@@ -23,19 +23,33 @@ object granja {
         sembrado.add(planta)
     }
 
-	method hayPlantaEn(pos){
-		return sembrado.any({cultivo => cultivo.position() == pos })
+	method validarSiPuedoPlantar(posit) {
+		if ( self.hayPlantaEn(posit)){
+				hector.error("No puedes plantar, ya hay una planta aquí") 
+		}else if( self.hayMercado(posit)){
+				hector.error("No puedes plantar, hay un mecado aquí") 
+		} 
 	}
 
-	method validarSiPuedoPlantar(posit) {
-		if ( self.hayPlantaEn(posit) or self.hayMercado(posit)){self.error("No puedes plantar, ya hay una planta aquí") }
-	  
+	method hayPlantaEn(pos){
+		return sembrado.any({cultivo => cultivo.position() == pos })
 	}
 
 	method hayMercado(posit){
 		return posit == game.at(0,0) or posit == game.at(9,9)
 	}
 
+	method agregarMercados(){
+		const mercado1 = new Mercado (position = game.at (0,0))
+		const mercado2 = new Mercado (position = game.at (9,9))
+
+		mercados.add(mercado1)
+		mercados.add(mercado2)
+
+		game.addVisual(mercado1)
+		game.addVisual(mercado2)
+
+	}
 
 	method mercadoEn(pos){
 		return mercados.find({mercado => mercado.position() == pos})
@@ -43,7 +57,7 @@ object granja {
 
 	method validarSiHayMercado(pos){
 		if(not self.hayMercado(pos)){
-			self.error("No puedo vender, no estoy en un mercado")
+			hector.error("No puedo vender, no estoy en un mercado")
 		}
 	}
 
@@ -51,9 +65,9 @@ object granja {
 		//ya se q tengo un mercado en esa pos!!
 
 		if(not self.mercadoEn(pos).tieneSuficienteDinero(valor)){
-			self.error("El mercado no tiene suficiente dinero para comprar mi mercancia")
-		}else if(hector.tieneMercaderia()){
-			self.error("No tengo nada para vender")
+			hector.error("No puede vender, el mercado no tiene suficiente dinero")
+		}else if(not hector.tieneMercaderia()){
+			hector.error("No tengo mercancia que vender")
 		}else{
 			game.say(self, "Venta realizada!")
 		}
@@ -72,19 +86,16 @@ object granja {
 
 	}
 
-	method plantaEn(_position){
-		return sembrado.find({planta => self.esMismaPosition(planta.position(), _position)})
+	method regarPlanta(_position) {
+		self.validarRegar(_position)
+		self.plantaEn(_position).regar()
 	}
 	method validarRegar(posit){
-		if (not self.hayPlantaEn(posit)){ self.error("No hay nada para regar") }
+		if (not self.hayPlantaEn(posit)){ hector.error("No hay nada para regar") }
 	}
 
-	method regarPlanta(_position) {
-
-		self.validarRegar(_position)
-		self.plantaEn(_position).evolucionar() 
-		
-
+	method plantaEn(_position){
+		return sembrado.find({planta => self.esMismaPosition(planta.position(), _position)})
 	}
 
 	method primeraPosicionLibreEnColumna(posicion) {

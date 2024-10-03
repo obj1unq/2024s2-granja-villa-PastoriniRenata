@@ -40,6 +40,11 @@ object hector {
 		game.addVisual(tomaco)
 	}
 
+	method regar(){
+		granja.regarPlanta(position)
+	}
+
+
 	method cosecha() {
 
 		granja.validarSiPuedoCosechar(position) //se fija si hay una planta y si es adulta, lo hago acá para poder saber d si me lo tengo q guardar en "cosechado"
@@ -47,10 +52,6 @@ object hector {
 		cosechado.add(granja.plantaEn(position)) //guardo la planta en la lista d hector para dsps poder venderla
 		granja.cosechar(position)
 		
-	}
-
-	method regar(){
-		granja.regarPlanta(position)
 	}
 	
 	method vender(){
@@ -63,8 +64,7 @@ object hector {
 
 		oro += self.valorDeSuCosecha()
 		cosechado.clear()
-		
-		
+	
 	}
 	method tieneMercaderia(){
 		return cosechado.size()>0
