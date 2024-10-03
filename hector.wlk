@@ -9,7 +9,7 @@ object hector {
 	const property image = "player.png"
 	var property oro = 0
 	var property cosechado = #{}
-	var property aspersores = #{}
+	var property aspersores = []
 
 	method mover(direccion){
 		const nuevaPosition = direccion.siguiente(position)
@@ -56,7 +56,7 @@ object hector {
 	
 	method vender(){
 		//no necesito validar xq si está vacío el set no pasa nada
-		granja.validarSiHayMercado(position)
+		granja.validarSiEstoyEnMercadoParaVender(position)
 		
 		granja.validarSiPuedeVenderEn(position, self.valorDeSuCosecha())
 		
@@ -81,8 +81,8 @@ object hector {
 
 	method agregarAspersor(){
 		const regador = new Aspersor(position = position)
+		granja.validarSiHayMercadoParaAspersor(self.position())
 		game.addVisual(regador)
-
 		aspersores.add(regador)
 	}
 

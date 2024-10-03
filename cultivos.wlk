@@ -196,7 +196,6 @@ object evolMaizAdulto {
 class Trigo {
 	var property position = game.at(1, 1)
 	var property etapa = evolTrigoBebe 
-	var property cosechado = false // osea q está en el campo plantada
 
 	method image(){
 		return etapa.image()

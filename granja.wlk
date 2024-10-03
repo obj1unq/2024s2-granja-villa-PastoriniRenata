@@ -27,7 +27,7 @@ object granja {
 		if ( self.hayPlantaEn(posit)){
 				hector.error("No puedes plantar, ya hay una planta aquí") 
 		}else if( self.hayMercado(posit)){
-				hector.error("No puedes plantar, hay un mecado aquí") 
+				hector.error("No puedes plantar, hay un mercado aquí") 
 		} 
 	}
 
@@ -55,9 +55,15 @@ object granja {
 		return mercados.find({mercado => mercado.position() == pos})
 	}
 
-	method validarSiHayMercado(pos){
+	method validarSiEstoyEnMercadoParaVender(pos){
 		if(not self.hayMercado(pos)){
 			hector.error("No puedo vender, no estoy en un mercado")
+		}
+	}
+	
+	method validarSiHayMercadoParaAspersor(pos){
+		if(self.hayMercado(pos)){
+			hector.error("No puedo poner aspersor, hay un mercado")
 		}
 	}
 
