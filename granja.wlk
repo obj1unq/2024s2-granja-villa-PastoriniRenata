@@ -69,7 +69,7 @@ object granja {
 		}else if(not hector.tieneMercaderia()){
 			hector.error("No tengo mercancia que vender")
 		}else{
-			game.say(self, "Venta realizada!")
+			game.say(hector, "Venta realizada!")
 		}
 	}
 	method elMercadoCompra(pos){
@@ -127,7 +127,7 @@ object granja {
 
 	method validarSiPuedoCosechar(posit){
 		if(not self.hayPlantaYEsAdultaEn(posit)){
-			self.error("No hay nada para cosechar")
+			hector.error("No hay nada para cosechar")
 		}
 	}
 
