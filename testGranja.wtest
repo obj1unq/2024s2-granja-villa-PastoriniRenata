@@ -1,9 +1,223 @@
-import example.pepita
+import aspersor.*
+import wollok.game.*
+import hector.*
+import cultivos.*
+import granja.*
+import movimiento.*
+import mercado.*
 
-describe "group of tests for pepita" {
+describe "Hector" {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+  test "Hector intenta plantar en la misma posicion más de una planta" {
+    hector.sembrarTrigo()
+     //no puede poner 2 en una misma posicion
+    assert.throwsExceptionWithMessage("No puedes plantar, ya hay una planta aquí", {hector.sembrarMaiz()})
+
+    assert.equals(granja.sembrado().size(),1)
+
+    hector.mover(izquierda)
+    hector.sembrarMaiz() 
+
+    assert.equals(granja.sembrado().size(),2)
+
+  }
+  test "Hector plantar en 2 posiciones" {
+    hector.sembrarTrigo()
+    
+    hector.mover(izquierda)
+    hector.sembrarMaiz() 
+
+    assert.equals(granja.sembrado().size(),2)
+
   }
 
+  test "Hector NO puede salir del tablero" {
+    //llego a hector a los 4 bordes e intento hacer hector.mover(__)
+    hector.position(game.at(0,0))
+    
+    assert.throwsExceptionWithMessage("No puedo moverme fuera del tablero", { hector.mover(izquierda) })
+    
+    assert.throwsExceptionWithMessage("No puedo moverme fuera del tablero", { hector.mover(abajo) })
+    
+    hector.position(game.at(9,9))
+    
+    assert.throwsExceptionWithMessage("No puedo moverme fuera del tablero", { hector.mover(derecha) })
+    
+    assert.throwsExceptionWithMessage("No puedo moverme fuera del tablero", { hector.mover(arriba) })
+  
+  }
+  test "Hector riega una planta" {
+
+    hector.sembrarTrigo()
+    hector.regar()
+
+    assert.that(granja.sembrado().all({planta => planta.esAdulto()}))
+
+    hector.mover(izquierda)
+    hector.sembrarMaiz() 
+
+    assert.notThat(granja.sembrado().all({planta => planta.esAdulto()}))
+
+
+  }
+  test "Hector intenta regar cuando no hay planta" {
+    
+    
+    assert.throwsExceptionWithMessage("No hay nada para regar", {hector.regar()})
+
+  }
+
+  test "Hector intenta planta en un mercado" {
+
+    hector.position(game.at(0,0))
+    granja.agregarMercados()
+    
+    assert.throwsExceptionWithMessage("No puedes plantar, hay un mercado aquí", {hector.sembrarMaiz()})
+
+    hector.position(game.at(9,9))
+    
+    assert.throwsExceptionWithMessage("No puedes plantar, hay un mercado aquí", {hector.sembrarMaiz()})
+
+  }
+
+
+  test "Hector intenta vender fuera de un mercado" {
+    //posicion inicial de hector es (4,4)
+    
+    assert.throwsExceptionWithMessage("No puedo vender, no estoy en un mercado", {hector.vender()})
+
+  }
+
+  test "Hector intenta vender, pero no tiene mercaderia" {
+    hector.position(game.at(0,0)) // está en un mercado
+    granja.agregarMercados()
+
+    assert.throwsExceptionWithMessage("No tengo mercancia que vender", {hector.vender()})
+  }
+
+
+  test "Hector intenta vender, tiene mercaderia, pero el mercado no tiene suficiente diero" {
+    granja.agregarMercados()
+   
+    granja.mercados().forEach({mercado => mercado.oro(100)})
+
+    hector.sembrarMaiz()
+    hector.regar()
+    hector.cosecha()
+    hector.mover(izquierda) // su cosecha vale 150
+    
+    hector.position(game.at(0,0)) // está en un mercado
+    
+    assert.throwsExceptionWithMessage("No puede vender, el mercado no tiene suficiente dinero", {hector.vender()})
+  }
+  /* COMO SE TESTEA UN game.say(----)???
+  test "Hector intenta vender, tiene mercaderia, y el mercado tiene suficiente diero" {
+    granja.agregarMercados()
+   
+    granja.mercados().forEach({mercado => mercado.oro(1000)})
+
+    hector.sembrarMaiz()
+    hector.regar()
+    hector.cosecha()
+    hector.mover(izquierda) // su cosecha vale 150
+    
+    hector.position(game.at(0,0)) // está en un mercado
+    
+    hector.vender()
+
+
+    assert.equals("Venta realizada!")
+  }
+  */
+
 }
+
+
+describe "Aspersores" {
+  test "Aspersores riegan todo el sector" {
+    hector.position(game.at(4,4))
+    hector.agregarAspersor()
+
+    const posicion = hector.position()
+    
+    granja.sembrar( new Maiz( position = game.at(3, 5)))
+    granja.sembrar( new Maiz( position = game.at(4, 5)))
+    granja.sembrar( new Maiz( position = game.at(5, 5)))
+    granja.sembrar( new Maiz( position = game.at(3, 4)))
+    granja.sembrar( new Maiz( position = game.at(4, 4)))
+    granja.sembrar( new Maiz( position = game.at(5, 4)))
+    granja.sembrar( new Maiz( position = game.at(3, 3)))
+    granja.sembrar( new Maiz( position = game.at(4, 3)))
+    granja.sembrar( new Maiz( position = game.at(5, 3)))
+
+    assert.that(granja.sembrado().all({planta => not planta.esAdulto()}))
+
+    hector.activarAspersores()
+
+    assert.that(granja.sembrado().all({planta => planta.esAdulto()}))
+
+  }
+
+
+}
+
+describe "Cultivos" {
+  test "Trigo ciclo de Adultez" {
+    const trigo = new Trigo(position = game.at(4,4))
+
+    assert.notThat(trigo.esAdulto())
+
+    trigo.regar() //evol 1
+
+    assert.that(trigo.esAdulto())
+
+    trigo.regar() //evol 2
+
+    assert.that(trigo.esAdulto())
+
+    trigo.regar() //evol 3
+
+    assert.that(trigo.esAdulto())
+
+    trigo.regar() //evol baby
+
+    assert.notThat(trigo.esAdulto())
+  }
+
+  test "Maiz ciclo de Adultez" {
+    const maiz = new Maiz(position = game.at(4,4))
+
+    assert.notThat(maiz.esAdulto())
+
+    maiz.regar() 
+
+    assert.that(maiz.esAdulto())
+
+    maiz.regar() 
+
+    assert.that(maiz.esAdulto())
+
+    maiz.regar() 
+
+    assert.that(maiz.esAdulto())
+
+    maiz.regar() 
+
+    assert.that(maiz.esAdulto()) //nunca deja de ser adulto
+  }
+
+  test "Tomaco ciclo de Adultez" {
+    const tomaco = new Tomaco(position = game.at(4,4))
+
+    assert.that(tomaco.esAdulto()) //Siempre es adulto
+
+    tomaco.regar() 
+
+    assert.that(tomaco.esAdulto())//Siempre es adulto
+
+  }
+
+
+}
+
+

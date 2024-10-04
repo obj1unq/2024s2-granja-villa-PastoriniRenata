@@ -1,6 +1,10 @@
 import wollok.game.*
 import hector.*
 import cultivos.*
+import granja.*
+import movimiento.*
+import mercado.*
+
 
 program farmville {
 	//  CONFIG	
@@ -9,9 +13,34 @@ program farmville {
 	game.width(10)
 	game.ground("ground.png")
 
-	//  VISUALES
- 	game.addVisualCharacter(hector)
- 	game.addVisual(new Maiz()) // Se agrega a modo de prueba
+	granja.agregarMercados()
+
+
+	game.addVisual(hector)
+ 	keyboard.up().onPressDo   ({hector.mover(arriba)})
+	keyboard.left().onPressDo ({hector.mover(izquierda)})
+	keyboard.down().onPressDo ({hector.mover(abajo)})
+	keyboard.right().onPressDo({hector.mover(derecha)})
+	
+
+	keyboard.t().onPressDo({hector.sembrarTrigo()  /* sembrar(Maiz) */ })
+	keyboard.m().onPressDo({hector.sembrarMaiz()   /* sembrar(Trigo) */})
+	keyboard.o().onPressDo({hector.sembrarTomaco() /* sembrar(Tomaco)*/})
+
+	keyboard.r().onPressDo({hector.regar()})
+
+	keyboard.c().onPressDo({hector.cosecha()})
+	
+	keyboard.v().onPressDo({hector.vender()})
+	
+	keyboard.space().onPressDo({hector.info()})
+
+	keyboard.a().onPressDo({hector.agregarAspersor()})
+
+	game.onTick(1000, "regador", {hector.activarAspersores()}) //cada 1 segundo se activan todos los aspersores q tenga hector
+
+	
+	
  	
  	//  COMIENZA
 	game.start()
