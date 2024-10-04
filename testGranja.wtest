@@ -119,30 +119,24 @@ describe "Hector" {
 
 describe "Aspersores" {
   test "Aspersores riegan todo el sector" {
-
-
-    hector.position(game.at(4,4))
     
+    const regador = new Aspersor(position = game.at(4,4))
 
-    hector.agregarAspersor()
-
-    const posicion = hector.position()
+    const posicion = regador.position()
     
-    granja.sembrar( new Trigo( position = game.at(3, 5)))
-    granja.sembrar( new Trigo( position = game.at(4, 5)))
-    granja.sembrar( new Trigo( position = game.at(5, 5)))
-    granja.sembrar( new Trigo( position = game.at(3, 4)))
-    granja.sembrar( new Trigo( position = game.at(4, 4)))
-    granja.sembrar( new Trigo( position = game.at(5, 4)))
-    granja.sembrar( new Trigo( position = game.at(3, 3)))
-    granja.sembrar( new Trigo( position = game.at(4, 3)))
-    granja.sembrar( new Trigo( position = game.at(5, 3)))
-
-    
+    granja.sembrar( new Maiz( position = game.at(3, 5)))
+    granja.sembrar( new Maiz( position = game.at(4, 5)))
+    granja.sembrar( new Maiz( position = game.at(5, 5)))
+    granja.sembrar( new Maiz( position = game.at(3, 4)))
+    granja.sembrar( new Maiz( position = game.at(4, 4)))
+    granja.sembrar( new Maiz( position = game.at(5, 4)))
+    granja.sembrar( new Maiz( position = game.at(3, 3)))
+    granja.sembrar( new Maiz( position = game.at(4, 3)))
+    granja.sembrar( new Maiz( position = game.at(5, 3)))
 
     assert.that(granja.sembrado().all({planta => not planta.esAdulto()}))
 
-    hector.activarAspersor()
+    regador.regar()
 
     assert.that(granja.sembrado().all({planta => planta.esAdulto()}))
 

@@ -5,6 +5,7 @@ import granja.*
 import movimiento.*
 import mercado.*
 
+
 program farmville {
 	//  CONFIG	
 	game.title("La granja de Héctor")

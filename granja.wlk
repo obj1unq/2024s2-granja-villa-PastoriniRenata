@@ -61,7 +61,7 @@ object granja {
 		}
 	}
 	
-	method validarSiHayMercadoParaAspersor(pos){
+	method validarSiNoEstoyEnMercado(pos){
 		if(self.hayMercado(pos)){
 			hector.error("No puedo poner aspersor, hay un mercado")
 		}
@@ -81,27 +81,23 @@ object granja {
 	method elMercadoCompra(pos){
 		self.mercadoEn(pos).compra()
 	}
-	
 
-	method esMismaPosition(pos1, pos2){
-		return pos1 == pos2
-
-	}
 	method campoSinPlantaEn(_position){
-		return sembrado.filter({planta => not self.esMismaPosition(planta.position(), _position)})
+		return sembrado.filter({planta => not (planta.position() == _position)})
 
 	}
 
-	method regarPlanta(_position) {
-		self.validarRegar(_position)
-		self.plantaEn(_position).regar()
+	method regarPlantaSiHay(_position) {
+		self.validarRegar(_position) //valida si hay planta en la posicion
+		self.plantaEn(_position).regar() //le digo al objeto q se riegue
 	}
 	method validarRegar(posit){
 		if (not self.hayPlantaEn(posit)){ hector.error("No hay nada para regar") }
 	}
 
 	method plantaEn(_position){
-		return sembrado.find({planta => self.esMismaPosition(planta.position(), _position)})
+		// la ejecuto sabiendo que aunq sea uno cumple la condicion
+		return sembrado.find({planta => planta.position() == _position})
 	}
 
 	method primeraPosicionLibreEnColumna(posicion) {
@@ -124,10 +120,10 @@ object granja {
 	method cosechar(posit){
 		//ya se q hay una planta en la posicion pasada por parametro y q es adulta!
 		
-		const plantaEnPosition = sembrado.find({planta => self.esMismaPosition(planta.position(), posit)})
+		const plantaEnPosition = sembrado.find({planta => planta.position() == posit})
 		game.removeVisual(plantaEnPosition)
 		
-		sembrado = sembrado.filter({planta => not self.esMismaPosition(planta.position(), posit)}) //saco la planta 
+		sembrado = sembrado.filter({planta => not (planta.position() == posit)}) //saco la planta 
 	
 	}
 

@@ -9,12 +9,14 @@ class Mercado{
     var property oro = 100000
     var property mercaderia = #{}
 
+
     
 
     method compra() {
-        mercaderia.add({hector.cosecha()})
+        mercaderia.addAll(hector.cosechado())
         oro -= hector.valorDeSuCosecha()
-        
+
+        //game.say(hector, "Mi mercaderia ahora es: " + self.mercaderia())
     }
 
     method tieneSuficienteDinero(precio){
@@ -24,3 +26,4 @@ class Mercado{
 
 
 }
+

@@ -41,7 +41,7 @@ object hector {
 	}
 
 	method regar(){
-		granja.regarPlanta(position)
+		granja.regarPlantaSiHay(position)
 	}
 
 
@@ -81,7 +81,7 @@ object hector {
 
 	method agregarAspersor(){
 		const regador = new Aspersor(position = position)
-		granja.validarSiHayMercadoParaAspersor(self.position())
+		granja.validarSiNoEstoyEnMercado(self.position())
 		game.addVisual(regador)
 		aspersores.add(regador)
 	}
