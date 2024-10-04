@@ -8,7 +8,7 @@ import mercado.*
 
 describe "Hector" {
 
-  test "Hector planta intenta plantar en la misma posicion" {
+  test "Hector intenta plantar en la misma posicion más de una planta" {
     hector.sembrarTrigo()
      //no puede poner 2 en una misma posicion
     assert.throwsExceptionWithMessage("No puedes plantar, ya hay una planta aquí", {hector.sembrarMaiz()})
@@ -21,8 +21,17 @@ describe "Hector" {
     assert.equals(granja.sembrado().size(),2)
 
   }
+  test "Hector plantar en 2 posiciones" {
+    hector.sembrarTrigo()
+    
+    hector.mover(izquierda)
+    hector.sembrarMaiz() 
 
-  test "Hector No puede salir del tablero" {
+    assert.equals(granja.sembrado().size(),2)
+
+  }
+
+  test "Hector NO puede salir del tablero" {
     //llego a hector a los 4 bordes e intento hacer hector.mover(__)
     hector.position(game.at(0,0))
     
@@ -59,15 +68,21 @@ describe "Hector" {
   }
 
   test "Hector intenta planta en un mercado" {
-    hector.position(game.at(0,0))
 
+    hector.position(game.at(0,0))
+    granja.agregarMercados()
+    
     assert.throwsExceptionWithMessage("No puedes plantar, hay un mercado aquí", {hector.sembrarMaiz()})
 
+    hector.position(game.at(9,9))
+    
+    assert.throwsExceptionWithMessage("No puedes plantar, hay un mercado aquí", {hector.sembrarMaiz()})
 
   }
 
 
   test "Hector intenta vender fuera de un mercado" {
+    //posicion inicial de hector es (4,4)
     
     assert.throwsExceptionWithMessage("No puedo vender, no estoy en un mercado", {hector.vender()})
 
@@ -75,7 +90,8 @@ describe "Hector" {
 
   test "Hector intenta vender, pero no tiene mercaderia" {
     hector.position(game.at(0,0)) // está en un mercado
-    
+    granja.agregarMercados()
+
     assert.throwsExceptionWithMessage("No tengo mercancia que vender", {hector.vender()})
   }
 
@@ -119,10 +135,10 @@ describe "Hector" {
 
 describe "Aspersores" {
   test "Aspersores riegan todo el sector" {
-    
-    const regador = new Aspersor(position = game.at(4,4))
+    hector.position(game.at(4,4))
+    hector.agregarAspersor()
 
-    const posicion = regador.position()
+    const posicion = hector.position()
     
     granja.sembrar( new Maiz( position = game.at(3, 5)))
     granja.sembrar( new Maiz( position = game.at(4, 5)))
@@ -136,7 +152,7 @@ describe "Aspersores" {
 
     assert.that(granja.sembrado().all({planta => not planta.esAdulto()}))
 
-    regador.regar()
+    hector.activarAspersores()
 
     assert.that(granja.sembrado().all({planta => planta.esAdulto()}))
 

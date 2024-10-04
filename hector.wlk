@@ -86,7 +86,7 @@ object hector {
 		aspersores.add(regador)
 	}
 
-	method activarAspersor(){
+	method activarAspersores(){
 		aspersores.forEach({aspersor => aspersor.regar()})
 
 	}
