@@ -138,8 +138,6 @@ class Tomaco {
 
 */
 
-
-
 class Maiz {
 	var property position = game.at(1, 1)
 	var property etapa = evolMaizBebe // es bebe y adulto es 1
@@ -282,7 +280,7 @@ class Tomaco {
 		Puedo regarlo muchas veces, en ningun lugar aclara q no se puede regar mas d una vez
 		*/
 		
-		position = granja.primeraPosicionLibreEnColumna(game.at(position.x(), position.y()+1)) //si no encuentra ninguna, se queda en el lugar!
+		position = granja.siguientePosicionSiEstaLibre(position) //si no encuentra ninguna, se queda en el lugar!
 		
 	}
 

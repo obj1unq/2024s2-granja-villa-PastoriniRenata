@@ -110,7 +110,7 @@ describe "Hector" {
     
     assert.throwsExceptionWithMessage("No puede vender, el mercado no tiene suficiente dinero", {hector.vender()})
   }
-  /* COMO SE TESTEA UN game.say(----)
+  /* COMO SE TESTEA UN game.say(----)???
   test "Hector intenta vender, tiene mercaderia, y el mercado tiene suficiente diero" {
     granja.agregarMercados()
    
@@ -157,4 +157,67 @@ describe "Aspersores" {
     assert.that(granja.sembrado().all({planta => planta.esAdulto()}))
 
   }
+
+
 }
+
+describe "Cultivos" {
+  test "Trigo ciclo de Adultez" {
+    const trigo = new Trigo(position = game.at(4,4))
+
+    assert.notThat(trigo.esAdulto())
+
+    trigo.regar() //evol 1
+
+    assert.that(trigo.esAdulto())
+
+    trigo.regar() //evol 2
+
+    assert.that(trigo.esAdulto())
+
+    trigo.regar() //evol 3
+
+    assert.that(trigo.esAdulto())
+
+    trigo.regar() //evol baby
+
+    assert.notThat(trigo.esAdulto())
+  }
+
+  test "Maiz ciclo de Adultez" {
+    const maiz = new Maiz(position = game.at(4,4))
+
+    assert.notThat(maiz.esAdulto())
+
+    maiz.regar() 
+
+    assert.that(maiz.esAdulto())
+
+    maiz.regar() 
+
+    assert.that(maiz.esAdulto())
+
+    maiz.regar() 
+
+    assert.that(maiz.esAdulto())
+
+    maiz.regar() 
+
+    assert.that(maiz.esAdulto()) //nunca deja de ser adulto
+  }
+
+  test "Tomaco ciclo de Adultez" {
+    const tomaco = new Tomaco(position = game.at(4,4))
+
+    assert.that(tomaco.esAdulto()) //Siempre es adulto
+
+    tomaco.regar() 
+
+    assert.that(tomaco.esAdulto())//Siempre es adulto
+
+  }
+
+
+}
+
+
